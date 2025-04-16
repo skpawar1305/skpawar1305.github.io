@@ -1,11 +1,23 @@
-<script>
-  const params = new URLSearchParams(window.location.search);
-  const room = params.get("room");
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Number Lane Invite</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="background-color: #000; color: #fff; display: flex; align-items: center; justify-content: center; height: 100vh;">
+  <p>Opening Number Lane...</p>
 
-  if (room) {
-    // Try to open your app via intent scheme (Android)
-    window.location.href = `intent://invite?room=${room}#Intent;scheme=https;package=com.dano.number_lane;end`;
-  } else {
-    window.location.href = "https://play.google.com/store/apps/details?id=com.dano.number_lane";
-  }
-</script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const room = params.get("room");
+
+    if (room) {
+      // Try to open your app via intent scheme (Android)
+      window.location.href = `intent://invite?room=${room}#Intent;scheme=https;package=com.dano.number_lane;end`;
+    } else {
+      window.location.href = "https://play.google.com/store/apps/details?id=com.dano.number_lane";
+    }
+  </script>
+</body>
+</html>

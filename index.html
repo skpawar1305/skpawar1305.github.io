@@ -3,18 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Apps - Small Snack Inventory &amp; Number Lane</title>
+  <title>My Apps - Small Snack Inventory, Number Lane &amp; Color Lane</title>
   <link rel="stylesheet" href="styles.css">
   <script>
     function showApp(app) {
       var inventorySection = document.getElementById("inventoryApp");
       var numberLaneSection = document.getElementById("numberLaneApp");
+      var colorLaneSection = document.getElementById("colorLaneApp");
       if (app === 'inventory') {
         inventorySection.style.display = "block";
         numberLaneSection.style.display = "none";
+        colorLaneSection.style.display = "none";
       } else if (app === 'numberlane') {
         inventorySection.style.display = "none";
         numberLaneSection.style.display = "block";
+        colorLaneSection.style.display = "none";
+      } else if (app === 'colorlane') {
+        inventorySection.style.display = "none";
+        numberLaneSection.style.display = "none";
+        colorLaneSection.style.display = "block";
       }
     }
     window.onload = function(){
@@ -29,10 +36,10 @@
     <nav>
       <button onclick="showApp('inventory')">Small Snack Inventory</button>
       <button onclick="showApp('numberlane')">Number Lane</button>
+      <button onclick="showApp('colorlane')">Color Lane</button>
     </nav>
   </header>
 
-  <!-- Small Snack Inventory App Section -->
   <section id="inventoryApp">
     <header>
       <h2>Small Snack Inventory App</h2>
@@ -81,7 +88,6 @@
     </footer>
   </section>
 
-  <!-- Number Lane App Section -->
   <section id="numberLaneApp" style="display:none;">
     <header>
       <h2>Number Lane</h2>
@@ -102,23 +108,24 @@
     <section id="featuresNumberLane">
       <h3>Key Features</h3>
       <ul>
-        <li><strong>Puzzle Challenges:</strong> Solve increasingly difficult puzzles to progress through the game.</li>
+        <li><strong>Visually Engaging Puzzles:</strong> Solve increasingly intricate levels by identifying and tracing the correct color gradient path.</li>
         <li>
-          <strong>Cloud Save:</strong> Your game progress is saved to 
-          <a href="https://firebase.google.com/docs/firestore" target="_blank">Firestore</a> when an internet connection is available, ensuring you can resume your game seamlessly across sessions and devices.
+          <strong>Play Games Cloud Save & Local Backup:</strong> Your game progress is saved to
+          <a href="https://firebase.google.com/docs/firestore" target="_blank">Play Games Services</a> when an internet connection is available, ensuring you can resume your game seamlessly across sessions and devices. Local backups are available for offline play.
         </li>
         <li>
-          <strong>Local Storage Backup:</strong> When offline, your game progress is stored locally, and synchronization occurs once connectivity is restored.
+          <strong>Multiplayer via Firestore (Future):</strong> Engage with friends in potential future real-time multiplayer using a secure system powered by Firebase Firestore.
         </li>
         <li>
-          <strong>Google Login Integration:</strong> Authenticate using Google Login to securely save and restore your progress and facilitate multiplayer features.
+          <strong>Play Games Services Login:</strong> Seamlessly log in using your Play Games Services account to sync progress and access potential future multiplayer features.
         </li>
+        <li><strong>Intuitive Interface:</strong> Enjoy a clean, user-friendly design focused on beautiful color gradients and seamless puzzle-solving.</li>
       </ul>
       <a href="https://play.google.com/store/apps/details?id=com.dano.number_lane" class="cta-button">Download Now</a>
     </section>
     <section id="aboutNumberLane">
       <h3>About Us</h3>
-      <p>Number Lane is crafted to provide a challenging puzzle experience while keeping your game data secure. Developed by Shubham Pawar, this app leverages both cloud and local storage to ensure smooth gameplay and robust data safety.</p>
+      <p>Color Lane is crafted to provide a visually engaging puzzle experience centered around color gradients. Developed by Shubham Pawar, this app ensures smooth gameplay and secure data handling through cloud and local storage.</p>
     </section>
     <section id="contactNumberLane">
       <h3>Contact Us</h3>
@@ -126,7 +133,54 @@
       <p>Email: <a href="mailto:skpawar1305@gmail.com">skpawar1305@gmail.com</a></p>
     </section>
     <footer>
-      <p>&copy; 2024 Number Lane. All rights reserved.</p>
+      <p>&copy; 2024 Color Lane. All rights reserved.</p>
+    </footer>
+  </section>
+
+  <section id="colorLaneApp" style="display:none;">
+    <header>
+      <h2>Color Lane</h2>
+      <p>A visually captivating puzzle game of color gradients.</p>
+      <a href="#featuresColorLane" class="cta-button">Discover Features</a>
+    </header>
+    <section id="screenshotsColorLane">
+      <h3>Game Screenshots</h3>
+      <div class="screenshot-gallery">
+        <img src="images/color_lane/1.jpg" alt="Color Lane Screenshot 1" />
+        <img src="images/color_lane/2.jpg" alt="Color Lane Screenshot 2" />
+        <img src="images/color_lane/3.jpg" alt="Color Lane Screenshot 3" />
+        <img src="images/color_lane/4.jpg" alt="Color Lane Screenshot 4" />
+      </div>
+    </section>
+    <section id="featuresColorLane">
+      <h3>Key Features</h3>
+      <ul>
+        <li><strong>Visually Engaging Puzzles:</strong> Progress through increasingly intricate levels that challenge you to identify and trace the correct color gradient path.</li>
+        <li>
+          <strong>Play Games Cloud Save & Local Backup:</strong> Your game progress is saved to
+          <a href="https://firebase.google.com/docs/firestore" target="_blank">Play Games Services</a> when online, with local backups for offline play.
+        </li>
+        <li>
+          <strong>Multiplayer via Firestore (Future):</strong> Engage with friends in potential future real-time multiplayer using Firebase Firestore.
+        </li>
+        <li>
+          <strong>Play Games Services Login:</strong> Securely log in to sync progress and access potential future multiplayer features.
+        </li>
+        <li><strong>Intuitive Interface:</strong> Enjoy a clean, user-friendly design focused on beautiful color gradients and seamless puzzle-solving.</li>
+      </ul>
+      <a href="https://play.google.com/store/apps/details??id=YOUR_COLOR_LANE_APP_ID" class="cta-button">Download Now</a>
+    </section>
+    <section id="aboutColorLane">
+      <h3>About Us</h3>
+      <p>Color Lane offers a unique and visually stimulating puzzle experience centered around the beauty and logic of color gradients. Developed by Shubham Pawar, this app provides engaging gameplay with secure data handling.</p>
+    </section>
+    <section id="contactColorLane">
+      <h3>Contact Us</h3>
+      <p>If you have any questions or feedback, feel free to reach out!</p>
+      <p>Email: <a href="mailto:skpawar1305@gmail.com">skpawar1305@gmail.com</a></p>
+    </section>
+    <footer>
+      <p>&copy; 2024 Color Lane. All rights reserved.</p>
     </footer>
   </section>
 

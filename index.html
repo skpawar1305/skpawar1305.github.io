@@ -3,25 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Apps - Small Snack Inventory, Number Lane &amp; Color Lane</title>
+  <title>My Apps - Small Snack Inventory, Number Lane, Color Lane &amp; Ariva</title>
   <link rel="stylesheet" href="styles.css">
   <script>
     function showApp(app) {
       var inventorySection = document.getElementById("inventoryApp");
       var numberLaneSection = document.getElementById("numberLaneApp");
       var colorLaneSection = document.getElementById("colorLaneApp");
+      var arivaSection = document.getElementById("arivaApp");
       if (app === 'inventory') {
         inventorySection.style.display = "block";
         numberLaneSection.style.display = "none";
         colorLaneSection.style.display = "none";
+        arivaSection.style.display = "none";
       } else if (app === 'numberlane') {
         inventorySection.style.display = "none";
         numberLaneSection.style.display = "block";
         colorLaneSection.style.display = "none";
+        arivaSection.style.display = "none";
       } else if (app === 'colorlane') {
         inventorySection.style.display = "none";
         numberLaneSection.style.display = "none";
         colorLaneSection.style.display = "block";
+        arivaSection.style.display = "none";
+      } else if (app === 'ariva') {
+        inventorySection.style.display = "none";
+        numberLaneSection.style.display = "none";
+        colorLaneSection.style.display = "none";
+        arivaSection.style.display = "block";
       }
     }
     window.onload = function(){
@@ -37,6 +46,7 @@
       <button onclick="showApp('inventory')">Small Snack Inventory</button>
       <button onclick="showApp('numberlane')">Number Lane</button>
       <button onclick="showApp('colorlane')">Color Lane</button>
+      <button onclick="showApp('ariva')">Ariva</button>
     </nav>
   </header>
 

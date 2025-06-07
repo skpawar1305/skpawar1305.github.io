@@ -3,243 +3,481 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Apps - Small Snack Inventory, Number Lane, Color Lane &amp; Ariva</title>
-  <link rel="stylesheet" href="styles.css">
-  <script>
-    function showApp(app) {
-      var inventorySection = document.getElementById("inventoryApp");
-      var numberLaneSection = document.getElementById("numberLaneApp");
-      var colorLaneSection = document.getElementById("colorLaneApp");
-      var arivaSection = document.getElementById("arivaApp");
-      if (app === 'inventory') {
-        inventorySection.style.display = "block";
-        numberLaneSection.style.display = "none";
-        colorLaneSection.style.display = "none";
-        arivaSection.style.display = "none";
-      } else if (app === 'numberlane') {
-        inventorySection.style.display = "none";
-        numberLaneSection.style.display = "block";
-        colorLaneSection.style.display = "none";
-        arivaSection.style.display = "none";
-      } else if (app === 'colorlane') {
-        inventorySection.style.display = "none";
-        numberLaneSection.style.display = "none";
-        colorLaneSection.style.display = "block";
-        arivaSection.style.display = "none";
-      } else if (app === 'ariva') {
-        inventorySection.style.display = "none";
-        numberLaneSection.style.display = "none";
-        colorLaneSection.style.display = "none";
-        arivaSection.style.display = "block";
+  <title>Dano Apps - Modern & Clean Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* --- General Reset & Body --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.7;
+      /* IMPROVEMENT: Replaced the heavy gradient with a clean, light background for a modern feel. */
+      background-color: #f8f9fa;
+      color: #343a40;
+    }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* --- Header & Navigation --- */
+    header {
+      /* IMPROVEMENT: Solid background with a subtle border looks more professional than glassmorphism. */
+      background: #ffffff;
+      border-bottom: 1px solid #dee2e6;
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
+      font-size: 2.25rem;
+      font-weight: 700;
+      /* IMPROVEMENT: Using the gradient here as a specific brand accent. */
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .nav-button {
+      /* IMPROVEMENT: Modern button style - subtle by default, vibrant on interaction. */
+      background: transparent;
+      color: #495057;
+      border: 1px solid #ced4da;
+      padding: 10px 24px;
+      border-radius: 25px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .nav-button:hover {
+      transform: translateY(-2px);
+      background: #667eea;
+      border-color: #667eea;
+      color: white;
+      box-shadow: 0 7px 20px rgba(102, 126, 234, 0.2);
+    }
+
+    .nav-button.active {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      border-color: transparent;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 7px 20px rgba(102, 126, 234, 0.25);
+    }
+
+    /* --- App Section --- */
+    .app-section {
+      /* IMPROVEMENT: Solid white background and a soft, layered shadow for a clean "card" look. */
+      background: #ffffff;
+      margin: 40px auto;
+      border-radius: 16px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.5s ease-out forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
-    window.onload = function(){
-      // Show the Inventory app details by default.
-      showApp('inventory');
+
+    .app-header {
+      /* Using the gradient here as a bold, intentional design element. */
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      padding: 60px 40px;
+      text-align: center;
     }
-  </script>
+    
+    .app-header h2 {
+      font-size: 2.75rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .app-header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-bottom: 30px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .expert-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .download-button {
+      background: white;
+      color: #667eea;
+      padding: 15px 35px;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      display: inline-block;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .download-button:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      color: #5a6fd8;
+    }
+
+    .app-content {
+      /* IMPROVEMENT: Increased padding provides more "breathing room". */
+      padding: 50px;
+    }
+
+    /* --- Content Styling --- */
+    .screenshot-section h3, .features-section h3, .about-section h3, .contact-section h3 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin-bottom: 30px;
+      color: #343a40;
+    }
+
+    .screenshot-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .screenshot-gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .screenshot-gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    }
+    
+    .features-list {
+      list-style: none;
+      display: grid;
+      gap: 20px;
+    }
+
+    .feature-item {
+      /* IMPROVEMENT: Cleaner look than a faint gradient. */
+      background-color: #f8f9fa;
+      padding: 25px;
+      border-radius: 12px;
+      border-left: 4px solid #667eea;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-item:hover {
+      transform: translateX(5px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.1);
+    }
+
+    .feature-item strong {
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .about-contact {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 50px;
+    }
+
+    .about-section, .contact-section {
+      background-color: #f8f9fa;
+      padding: 30px;
+      border-radius: 12px;
+    }
+
+    .contact-section a {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-section a:hover {
+      text-decoration: underline;
+    }
+
+    /* --- Footer --- */
+    .main-footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: #6c757d;
+      margin-top: 50px;
+    }
+
+    /* --- Responsive Design --- */
+    @media (max-width: 768px) {
+      .app-header h2 {
+        font-size: 2.25rem;
+      }
+      .app-header p {
+        font-size: 1rem;
+      }
+      .app-header, .app-content {
+        padding: 40px 25px;
+      }
+      .about-contact {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
-    <h1>Our Apps</h1>
-    <nav>
-      <button onclick="showApp('inventory')">Small Snack Inventory</button>
-      <button onclick="showApp('numberlane')">Number Lane</button>
-      <button onclick="showApp('colorlane')">Color Lane</button>
-      <button onclick="showApp('ariva')">Ariva</button>
-    </nav>
+    <div class="container">
+      <h1>Dano Apps</h1>
+      <nav>
+        <button class="nav-button" onclick="showApp('numberlane')">Number Lane</button>
+        <button class="nav-button" onclick="showApp('colorlane')">Color Lane</button>
+        <button class="nav-button" onclick="showApp('ariva')">Ariva</button>
+        <button class="nav-button" onclick="showApp('inventory')">Small Snack Inventory</button>
+      </nav>
+    </div>
   </header>
 
-  <section id="inventoryApp">
-    <header>
-      <h2>Small Snack Inventory App</h2>
-      <p>Your comprehensive solution for snack inventory management.</p>
-      <a href="#featuresInventory" class="cta-button">Discover Features</a>
-    </header>
-    <section id="screenshotsInventory">
-      <h3>App Screenshots</h3>
-      <div class="screenshot-gallery">
-        <img src="images/ssi/1.jpg" alt="Screenshot 1" />
-        <img src="images/ssi/2.jpg" alt="Screenshot 2" />
-        <img src="images/ssi/3.jpg" alt="Screenshot 3" />
-        <img src="images/ssi/4.jpg" alt="Screenshot 4" />
-        <img src="images/ssi/5.jpg" alt="Screenshot 5" />
-        <img src="images/ssi/6.jpg" alt="Screenshot 6" />
-        <img src="images/ssi/7.jpg" alt="Screenshot 7" />
-        <img src="images/ssi/8.jpg" alt="Screenshot 8" />
+  <div class="container">
+    <section id="inventoryApp" class="app-section" style="display:none;">
+      <div class="app-header">
+        <h2>Small Snack Inventory</h2>
+        <p>Your comprehensive solution for snack inventory management</p>
+        <a href="https://play.google.com/store/apps/details?id=com.dano.small_snack_inventory" class="download-button">📱 Download Now</a>
+      </div>
+      
+      <div class="app-content">
+        <div class="screenshot-section">
+          <h3>App Screenshots</h3>
+          <div class="screenshot-gallery">
+            <img src="images/ssi/1.jpg" alt="Screenshot 1" />
+            <img src="images/ssi/2.jpg" alt="Screenshot 2" />
+            <img src="images/ssi/3.jpg" alt="Screenshot 3" />
+            <img src="images/ssi/4.jpg" alt="Screenshot 4" />
+            <img src="images/ssi/5.jpg" alt="Screenshot 5" />
+            <img src="images/ssi/6.jpg" alt="Screenshot 6" />
+            <img src="images/ssi/7.jpg" alt="Screenshot 7" />
+            <img src="images/ssi/8.jpg" alt="Screenshot 8" />
+          </div>
+        </div>
+
+        <div class="features-section">
+          <h3>Key Features</h3>
+          <ul class="features-list">
+            <li class="feature-item"><strong>Inventory Management:</strong> Easily manage your snack inventory by adding, editing, and removing items.</li>
+            <li class="feature-item"><strong>Sales Tracking:</strong> Monitor sales and billing activities with automatic inventory updates.</li>
+            <li class="feature-item"><strong>Delivery Management:</strong> Track undelivered quantities and schedule timely reminders.</li>
+            <li class="feature-item"><strong>Customer Management:</strong> Organize your customer database and link customers to transactions.</li>
+            <li class="feature-item"><strong>Offline Access:</strong> Manage inventory and track sales even without an internet connection.</li>
+          </ul>
+        </div>
       </div>
     </section>
-    <section id="featuresInventory">
-      <h3>Key Features</h3>
-      <ul>
-        <li><strong>Inventory Management:</strong> Easily manage your snack inventory by adding, editing, and removing items. Track stock levels in real-time and make adjustments seamlessly.</li>
-        <li><strong>Sales Tracking:</strong> Monitor sales and billing activities with automatic inventory updates, including order and delivery dates, and payment statuses.</li>
-        <li><strong>Delivery Management:</strong> Track undelivered quantities and schedule timely reminders for upcoming deliveries.</li>
-        <li><strong>Customer Management:</strong> Organize your customer database and link customers to specific events or transactions easily.</li>
-        <li><strong>Event-Based Organization:</strong> Manage multiple events and monitor the stock needed for each occasion.</li>
-        <li><strong>User-Friendly Interface:</strong> Enjoy a simple yet powerful design that offers essential tools without overwhelming complexity.</li>
-        <li><strong>Customizable Notifications:</strong> Schedule and customize notifications for various events, ensuring you stay informed.</li>
-        <li><strong>Data Backup and Restoration:</strong> Easily create backups of your records to protect your data.</li>
-        <li><strong>Offline Access:</strong> Manage inventory and track sales even without an internet connection.</li>
-      </ul>
-      <a href="https://play.google.com/store/apps/details?id=com.dano.small_snack_inventory" class="cta-button">Download Now</a>
-    </section>
-    <section id="aboutInventory">
-      <h3>About Us</h3>
-      <p>Small Snack Inventory is designed to simplify snack inventory management for small businesses, vendors, and individuals. Our app helps you save time and reduce errors in your daily operations, making it easier to run your snack business.</p>
-    </section>
-    <section id="contactInventory">
-      <h3>Contact Us</h3>
-      <p>If you have any questions or feedback, feel free to reach out!</p>
-      <p>Email: <a href="mailto:skpawar1305@gmail.com">skpawar1305@gmail.com</a></p>
-    </section>
-    <footer>
-      <p>&copy; 2024 Small Snack Inventory. All rights reserved.</p>
-    </footer>
-  </section>
 
-  <section id="numberLaneApp" style="display:none;">
-    <header>
-      <h2>Number Lane</h2>
-      <p>An engaging puzzle experience to challenge your mind.</p>
-      <a href="#featuresNumberLane" class="cta-button">Discover Features</a>
-    </header>
-    <section id="screenshotsNumberLane">
-      <h3>Game Screenshots</h3>
-      <div class="screenshot-gallery">
-        <img src="images/number_lane/1.png" alt="Number Lane Screenshot 1" />
-        <img src="images/number_lane/2.png" alt="Number Lane Screenshot 2" />
-        <img src="images/number_lane/3.png" alt="Number Lane Screenshot 3" />
-        <img src="images/number_lane/4.png" alt="Number Lane Screenshot 4" />
-        <img src="images/number_lane/5.png" alt="Number Lane Screenshot 5" />
-        <img src="images/number_lane/6.png" alt="Number Lane Screenshot 5" />
+    <section id="numberlaneApp" class="app-section" style="display:none;">
+      <div class="app-header">
+        <h2>Number Lane</h2>
+        <p>An engaging puzzle experience to challenge your mind</p>
+        <a href="https://play.google.com/store/apps/details?id=com.dano.number_lane" class="download-button">📱 Download Now</a>
+      </div>
+      
+      <div class="app-content">
+        <div class="screenshot-section">
+          <h3>Game Screenshots</h3>
+          <div class="screenshot-gallery">
+            <img src="images/number_lane/1.png" alt="Number Lane Screenshot 1" />
+            <img src="images/number_lane/2.png" alt="Number Lane Screenshot 2" />
+            <img src="images/number_lane/3.png" alt="Number Lane Screenshot 3" />
+            <img src="images/number_lane/4.png" alt="Number Lane Screenshot 4" />
+            <img src="images/number_lane/5.png" alt="Number Lane Screenshot 5" />
+            <img src="images/number_lane/6.png" alt="Number Lane Screenshot 6" />
+          </div>
+        </div>
+
+        <div class="features-section">
+          <h3>Key Features</h3>
+          <ul class="features-list">
+            <li class="feature-item"><strong>Visually Engaging Puzzles:</strong> Solve intricate levels by identifying and tracing the correct color gradient path.</li>
+            <li class="feature-item"><strong>Cloud Save & Local Backup:</strong> Progress is saved to Play Games Services and backed up locally.</li>
+            <li class="feature-item"><strong>Intuitive Interface:</strong> A clean, user-friendly design focused on seamless puzzle-solving.</li>
+            <li class="feature-item"><strong>Future Multiplayer:</strong> Plans for real-time multiplayer using a secure backend system.</li>
+          </ul>
+        </div>
       </div>
     </section>
-    <section id="featuresNumberLane">
-      <h3>Key Features</h3>
-      <ul>
-        <li><strong>Visually Engaging Puzzles:</strong> Solve increasingly intricate levels by identifying and tracing the correct color gradient path.</li>
-        <li>
-          <strong>Play Games Cloud Save & Local Backup:</strong> Your game progress is saved to
-          <a href="https://firebase.google.com/docs/firestore" target="_blank">Play Games Services</a> when an internet connection is available, ensuring you can resume your game seamlessly across sessions and devices. Local backups are available for offline play.
-        </li>
-        <li>
-          <strong>Multiplayer via Firestore (Future):</strong> Engage with friends in potential future real-time multiplayer using a secure system powered by Firebase Firestore.
-        </li>
-        <li>
-          <strong>Play Games Services Login:</strong> Seamlessly log in using your Play Games Services account to sync progress and access potential future multiplayer features.
-        </li>
-        <li><strong>Intuitive Interface:</strong> Enjoy a clean, user-friendly design focused on beautiful color gradients and seamless puzzle-solving.</li>
-      </ul>
-      <a href="https://play.google.com/store/apps/details?id=com.dano.number_lane" class="cta-button">Download Now</a>
-    </section>
-    <section id="aboutNumberLane">
-      <h3>About Us</h3>
-      <p>Color Lane is crafted to provide a visually engaging puzzle experience centered around color gradients. Developed by Shubham Pawar, this app ensures smooth gameplay and secure data handling through cloud and local storage.</p>
-    </section>
-    <section id="contactNumberLane">
-      <h3>Contact Us</h3>
-      <p>If you have any questions or feedback, feel free to reach out!</p>
-      <p>Email: <a href="mailto:skpawar1305@gmail.com">skpawar1305@gmail.com</a></p>
-    </section>
-    <footer>
-      <p>&copy; 2024 Color Lane. All rights reserved.</p>
-    </footer>
-  </section>
 
-  <section id="colorLaneApp" style="display:none;">
-    <header>
-      <h2>Color Lane</h2>
-      <p>A visually captivating puzzle game of color gradients.</p>
-      <a href="#featuresColorLane" class="cta-button">Discover Features</a>
-    </header>
-    <section id="screenshotsColorLane">
-      <h3>Game Screenshots</h3>
-      <div class="screenshot-gallery">
-        <img src="images/color_lane/1.jpg" alt="Color Lane Screenshot 1" />
-        <img src="images/color_lane/2.jpg" alt="Color Lane Screenshot 2" />
-        <img src="images/color_lane/3.jpg" alt="Color Lane Screenshot 3" />
-        <img src="images/color_lane/4.jpg" alt="Color Lane Screenshot 4" />
+    <section id="colorlaneApp" class="app-section" style="display:none;">
+      <div class="app-header">
+        <div class="expert-badge">⭐ Expert Approved on Play Store</div>
+        <h2>Color Lane</h2>
+        <p>A visually captivating puzzle game of color gradients</p>
+        <a href="https://play.google.com/store/apps/details?id=com.dano.color_lane" class="download-button">📱 Download Now</a>
+      </div>
+      
+      <div class="app-content">
+        <div class="screenshot-section">
+          <h3>Game Screenshots</h3>
+          <div class="screenshot-gallery">
+            <img src="images/color_lane/1.jpg" alt="Color Lane Screenshot 1" />
+            <img src="images/color_lane/2.jpg" alt="Color Lane Screenshot 2" />
+            <img src="images/color_lane/3.jpg" alt="Color Lane Screenshot 3" />
+            <img src="images/color_lane/4.jpg" alt="Color Lane Screenshot 4" />
+          </div>
+        </div>
+
+        <div class="features-section">
+          <h3>Key Features</h3>
+          <ul class="features-list">
+            <li class="feature-item"><strong>Visually Engaging Puzzles:</strong> Progress through increasingly intricate levels that challenge your perception.</li>
+            <li class="feature-item"><strong>Play Games Cloud Save:</strong> Your game progress is saved to Play Games Services when online.</li>
+            <li class="feature-item"><strong>Play Games Services Login:</strong> Securely log in to sync progress and access potential features.</li>
+            <li class="feature-item"><strong>Intuitive Interface:</strong> A design focused on beautiful color gradients and seamless puzzle-solving.</li>
+          </ul>
+        </div>
       </div>
     </section>
-    <section id="featuresColorLane">
-      <h3>Key Features</h3>
-      <ul>
-        <li><strong>Visually Engaging Puzzles:</strong> Progress through increasingly intricate levels that challenge you to identify and trace the correct color gradient path.</li>
-        <li>
-          <strong>Play Games Cloud Save & Local Backup:</strong> Your game progress is saved to
-          <a href="https://firebase.google.com/docs/firestore" target="_blank">Play Games Services</a> when online, with local backups for offline play.
-        </li>
-        <li>
-          <strong>Multiplayer via Firestore (Future):</strong> Engage with friends in potential future real-time multiplayer using Firebase Firestore.
-        </li>
-        <li>
-          <strong>Play Games Services Login:</strong> Securely log in to sync progress and access potential future multiplayer features.
-        </li>
-        <li><strong>Intuitive Interface:</strong> Enjoy a clean, user-friendly design focused on beautiful color gradients and seamless puzzle-solving.</li>
-      </ul>
-      <a href="https://play.google.com/store/apps/details??id=com.dano.color_lane" class="cta-button">Download Now</a>
-    </section>
-    <section id="aboutColorLane">
-      <h3>About Us</h3>
-      <p>Color Lane offers a unique and visually stimulating puzzle experience centered around the beauty and logic of color gradients. Developed by Shubham Pawar, this app provides engaging gameplay with secure data handling.</p>
-    </section>
-    <section id="contactColorLane">
-      <h3>Contact Us</h3>
-      <p>If you have any questions or feedback, feel free to reach out!</p>
-      <p>Email: <a href="mailto:skpawar1305@gmail.com">skpawar1305@gmail.com</a></p>
-    </section>
-    <footer>
-      <p>&copy; 2024 Color Lane. All rights reserved.</p>
-    </footer>
-  </section>
 
-  <section id="arivaApp" style="display:none;">
-    <header>
-      <h2>ARIVA: Cyber Infiltration</h2>
-      <p>Dive into the digital realm as a cyber ninja on a mission to outsmart a rogue AI network.</p>
-      <a href="#featuresAriva" class="cta-button">Discover Features</a>
-    </header>
-    <section id="screenshotsAriva">
-      <h3>Game Screenshots</h3>
-      <div class="screenshot-gallery">
-        <img src="images/ariva/1.jpg" alt="ARIVA Screenshot 1" />
-        <img src="images/ariva/2.jpg" alt="ARIVA Screenshot 2" />
-        <img src="images/ariva/3.jpg" alt="ARIVA Screenshot 3" />
-        <img src="images/ariva/4.jpg" alt="ARIVA Screenshot 4" />
-        <img src="images/ariva/5.jpg" alt="ARIVA Screenshot 5" />
-        <img src="images/ariva/6.jpg" alt="ARIVA Screenshot 6" />
+    <section id="arivaApp" class="app-section" style="display:none;">
+      <div class="app-header">
+        <h2>ARIVA: Cyber Infiltration</h2>
+        <p>Dive into the digital realm as a cyber ninja on a mission to outsmart a rogue AI network</p>
+        <a href="https://play.google.com/store/apps/details?id=com.dano.ariva" class="download-button">📱 Download Now</a>
+      </div>
+      
+      <div class="app-content">
+        <div class="screenshot-section">
+          <h3>Game Screenshots</h3>
+          <div class="screenshot-gallery">
+            <img src="images/ariva/1.jpg" alt="ARIVA Screenshot 1" />
+            <img src="images/ariva/2.jpg" alt="ARIVA Screenshot 2" />
+            <img src="images/ariva/3.jpg" alt="ARIVA Screenshot 3" />
+            <img src="images/ariva/4.jpg" alt="ARIVA Screenshot 4" />
+            <img src="images/ariva/5.jpg" alt="ARIVA Screenshot 5" />
+            <img src="images/ariva/6.jpg" alt="ARIVA Screenshot 6" />
+          </div>
+        </div>
+
+        <div class="features-section">
+          <h3>Key Features</h3>
+          <ul class="features-list">
+            <li class="feature-item"><strong>Strategic Sliding Puzzles:</strong> Master the art of movement across intricate grid layouts.</li>
+            <li class="feature-item"><strong>Evade Cyber Threats:</strong> Avoid red and gray anti-intrusion systems that instantly end your mission.</li>
+            <li class="feature-item"><strong>Immersive Cyber Theme:</strong> Enjoy glowing visuals, a sleek dark UI, and atmospheric sound effects.</li>
+            <li class="feature-item"><strong>Compete for Glory:</strong> Submit your score to the leaderboard and prove you're the ultimate cyber ninja.</li>
+          </ul>
+        </div>
       </div>
     </section>
-    <section id="featuresAriva">
-      <h3>Key Features</h3>
-      <ul>
-        <li><strong>Strategic Sliding Puzzles:</strong> Master the art of movement across intricate grid layouts, planning each slide to perfection.</li>
-        <li><strong>Unlock the System Core:</strong> Collect yellow encryption keys to reach your objective, with dual-key challenges in advanced levels.</li>
-        <li><strong>Evade Cyber Threats:</strong> Avoid red and gray anti-intrusion systems that instantly end your mission.</li>
-        <li><strong>Boost Your Performance:</strong> Step on green, blue, and light blue tiles to earn bonuses, time boosts, or slowdowns.</li>
-        <li><strong>Progress Through Levels:</strong> Conquer 20 levels of increasing difficulty, each with new mechanics and layouts.</li>
-        <li><strong>Immersive Cyber Theme:</strong> Enjoy glowing visuals, sleek dark UI, AI narration, and atmospheric sound effects.</li>
-        <li><strong>Compete for Glory:</strong> Submit your score to the leaderboard and prove you're the ultimate cyber ninja.</li>
-      </ul>
-      <a href="https://play.google.com/store/apps/details?id=com.dano.ariva" class="cta-button">Download Now</a>
-    </section>
-    <section id="aboutAriva">
-      <h3>About the Game</h3>
-      <p>ARIVA is a thrilling puzzle experience set in a digital world where strategy, timing, and clever movement are key to success. Developed by Shubham Pawar, it delivers a sleek cyber-themed challenge for puzzle lovers and tactical gamers alike.</p>
-    </section>
-    <section id="contactAriva">
-      <h3>Contact Us</h3>
-      <p>If you have any questions or feedback, feel free to reach out!</p>
-      <p>Email: <a href="mailto:skpawar1305@gmail.com">skpawar1305@gmail.com</a></p>
-    </section>
-    <footer>
-      <p>&copy; 2024 ARIVA. All rights reserved.</p>
-    </footer>
-  </section>
+    
+    <div id="shared-about" class="about-contact">
+        <div class="about-section">
+          <h3>About Dano Apps</h3>
+          <p>Our applications are crafted to provide unique and engaging experiences, from visually stimulating puzzles to practical utility apps. Developed by Shubham Pawar, we focus on smooth gameplay, user-friendly design, and secure data handling.</p>
+        </div>
+        <div class="contact-section">
+          <h3>Contact Us</h3>
+          <p>Have questions or feedback? We'd love to hear from you!</p>
+          <p>Email: <a href="mailto:skpawar1305@gmail.com">skpawar1305@gmail.com</a></p>
+        </div>
+      </div>
 
-  <footer>
-    <p>&copy; 2024 Dano. All rights reserved.</p>
+  </div>
+
+  <footer class="main-footer">
+    <p>&copy; 2025 Dano. All rights reserved.</p>
   </footer>
+
+  <script>
+    function showApp(appId) {
+      // Hide all app sections
+      const sections = document.querySelectorAll('.app-section');
+      sections.forEach(section => {
+        section.style.display = 'none';
+      });
+
+      // Remove active class from all buttons
+      const buttons = document.querySelectorAll('.nav-button');
+      buttons.forEach(button => button.classList.remove('active'));
+
+      // Show the selected app section
+      const activeSection = document.getElementById(appId + 'App');
+      if (activeSection) {
+        activeSection.style.display = 'block';
+      }
+
+      // Add active class to the clicked button
+      // Use a more robust selector to find the button
+      const activeButton = document.querySelector(`.nav-button[onclick="showApp('${appId}')"]`);
+      if (activeButton) {
+        activeButton.classList.add('active');
+      }
+      
+      // Ensure the shared about/contact section is always visible
+      document.getElementById('shared-about').style.display = 'grid';
+    }
+
+    // Run on page load
+    window.onload = function() {
+      // Start by showing Number Lane by default
+      showApp('numberlane');
+    };
+
+    // Trigger animations
+    document.addEventListener('DOMContentLoaded', function() {
+      const sections = document.querySelectorAll('.app-section');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.animationPlayState = 'running';
+          }
+        });
+      }, { threshold: 0.1 });
+
+      sections.forEach(section => {
+        observer.observe(section);
+      });
+    });
+  </script>
 </body>
 </html>

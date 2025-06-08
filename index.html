@@ -29,6 +29,11 @@
       box-sizing: border-box;
     }
 
+    /* Add smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
       background: var(--bg-dark);
@@ -37,7 +42,6 @@
       overflow-x: hidden;
     }
 
-    /* Animated background */
     body::before {
       content: '';
       position: fixed;
@@ -58,7 +62,6 @@
       66% { transform: translate(-20px, 20px) rotate(240deg); }
     }
 
-    /* Header */
     header {
       position: fixed;
       top: 0;
@@ -85,6 +88,7 @@
       background: var(--gradient-1);
       -webkit-background-clip: text;
       background-clip: text;
+      color: transparent; /* Fallback for browsers that don't support background-clip */
       -webkit-text-fill-color: transparent;
     }
 
@@ -93,6 +97,7 @@
       flex-direction: column;
       cursor: pointer;
       gap: 4px;
+      z-index: 1001; /* Ensure it's above the nav */
     }
 
     .nav-toggle span {
@@ -111,8 +116,9 @@
       display: flex;
       gap: 0.5rem;
     }
-
-    .nav-btn {
+    
+    /* Changed nav buttons to anchor tags for semantic links */
+    .nav-link {
       padding: 0.5rem 1rem;
       background: transparent;
       border: 1px solid var(--border);
@@ -122,26 +128,17 @@
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       font-size: 0.875rem;
       font-weight: 500;
+      text-decoration: none;
     }
 
-    .nav-btn:hover {
+    .nav-link:hover {
       border-color: var(--primary);
       color: var(--text-primary);
       transform: translateY(-2px);
     }
 
-    .nav-btn.active {
-      background: var(--primary);
-      border-color: var(--primary);
-      color: white;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
-    }
-
-    /* Main content */
     main {
-      margin-top: 80px;
-      min-height: calc(100vh - 80px);
+      padding-top: 100px; /* Increased padding to clear fixed header */
     }
 
     .container {
@@ -150,25 +147,79 @@
       padding: 0 1rem;
     }
 
-    /* App sections */
-    .app-section {
-      display: none;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    /* NEW: Intro Hero Section */
+    .intro-hero {
+      text-align: center;
+      padding: 4rem 1rem;
     }
 
-    .app-section.active {
+    .intro-hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .intro-hero p {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* NEW: Portfolio Grid Section */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0 4rem;
+    }
+
+    .app-card {
+      background: var(--bg-card);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      text-decoration: none;
+      color: var(--text-primary);
+      transition: all 0.3s ease;
       display: block;
-      opacity: 1;
-      transform: translateY(0);
     }
 
-    /* Hero section */
+    .app-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary);
+    }
+
+    .app-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    .app-card p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+
+    /* App sections are now always visible */
+    .app-section {
+      padding: 4rem 0;
+      border-top: 1px solid var(--border);
+    }
+    .app-section:first-of-type {
+      border-top: none; /* Remove border from the first app section */
+    }
+
     .hero {
       background: var(--bg-card);
       border-radius: 24px;
-      margin: 2rem 0;
+      margin-bottom: 2rem;
       overflow: hidden;
       position: relative;
       box-shadow: var(--shadow-lg);
@@ -207,12 +258,9 @@
       font-size: clamp(2rem, 5vw, 3.5rem);
       font-weight: 800;
       margin-bottom: 1rem;
-      background: var(--gradient-1);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
+      line-height: 1.2;
     }
-
+    
     .hero p {
       font-size: 1.125rem;
       color: var(--text-secondary);
@@ -239,11 +287,10 @@
       box-shadow: var(--shadow-lg);
     }
 
-    /* Content sections */
     .content {
       display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
-      margin: 2rem 0;
     }
 
     .card {
@@ -251,14 +298,9 @@
       border-radius: 16px;
       border: 1px solid var(--border);
       overflow: hidden;
-      transition: all 0.3s ease;
     }
-
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-lg);
-      border-color: var(--primary);
-    }
+    
+    /* Removed hover effect from layout cards to avoid competing with app-card hover */
 
     .card-header {
       padding: 1.5rem;
@@ -275,7 +317,6 @@
       padding: 1.5rem;
     }
 
-    /* Screenshots */
     .screenshots {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -287,34 +328,14 @@
       border-radius: 12px;
       overflow: hidden;
       position: relative;
-      cursor: pointer;
-      transition: transform 0.3s ease;
     }
-
-    .screenshot:hover {
-      transform: scale(1.05);
-    }
-
+    
     .screenshot img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
 
-    .screenshot::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(45deg, transparent, rgba(99, 102, 241, 0.1));
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .screenshot:hover::after {
-      opacity: 1;
-    }
-
-    /* Features */
     .features {
       display: grid;
       gap: 1rem;
@@ -327,9 +348,8 @@
       padding: 1.5rem;
       position: relative;
       overflow: hidden;
-      transition: all 0.3s ease;
     }
-
+    
     .feature::before {
       content: '';
       position: absolute;
@@ -340,23 +360,19 @@
       background: var(--gradient-1);
     }
 
-    .feature:hover {
-      background: rgba(99, 102, 241, 0.1);
-      transform: translateX(8px);
-    }
-
     .feature-title {
       font-weight: 600;
       color: var(--primary);
       margin-bottom: 0.5rem;
     }
 
-    /* About section */
     .about-contact {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      margin: 2rem 0;
+        display: grid;
+        grid-template-columns: 1fr; /* Stacked by default now */
+        gap: 2rem;
+        margin: 4rem 0 2rem;
+        padding-top: 4rem;
+        border-top: 1px solid var(--border);
     }
 
     .contact a {
@@ -368,17 +384,15 @@
     .contact a:hover {
       text-decoration: underline;
     }
-
-    /* Footer */
+    
     footer {
       text-align: center;
       padding: 2rem;
       color: var(--text-secondary);
       border-top: 1px solid var(--border);
-      margin-top: 4rem;
+      margin-top: 2rem;
     }
 
-    /* Mobile responsive */
     @media (max-width: 768px) {
       .nav-toggle {
         display: flex;
@@ -386,18 +400,20 @@
 
       nav {
         position: absolute;
-        top: 100%;
+        top: 0;
         left: 0;
         right: 0;
-        background: rgba(15, 15, 35, 0.95);
+        background: rgba(15, 15, 35, 0.98);
         backdrop-filter: blur(20px);
-        border-top: 1px solid var(--border);
+        height: 100vh;
         flex-direction: column;
-        padding: 1rem;
+        padding: 6rem 2rem 2rem;
+        align-items: center;
+        justify-content: center;
         transform: translateY(-100%);
         opacity: 0;
         visibility: hidden;
-        transition: all 0.3s ease;
+        transition: all 0.4s cubic-bezier(0.86, 0, 0.07, 1);
       }
 
       nav.active {
@@ -405,11 +421,13 @@
         opacity: 1;
         visibility: visible;
       }
-
-      .nav-btn {
+      
+      /* Make nav links bigger for mobile */
+      .nav-link {
         width: 100%;
         text-align: center;
         padding: 1rem;
+        font-size: 1.25rem;
       }
 
       .hero-content {
@@ -419,49 +437,19 @@
       .screenshots {
         grid-template-columns: repeat(2, 1fr);
       }
-
-      .about-contact {
-        grid-template-columns: 1fr;
+      
+      .content {
+         grid-template-columns: 1fr;
       }
 
       .container {
         padding: 0 0.5rem;
       }
     }
-
-    @media (max-width: 480px) {
-      .screenshots {
-        grid-template-columns: 1fr;
-      }
-
-      .hero h1 {
-        font-size: 2rem;
-      }
-
-      .download-btn {
-        padding: 0.875rem 1.5rem;
-        font-size: 0.9rem;
-      }
-    }
-
-    /* Loading animation */
-    @keyframes slideUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .animate-in {
-      animation: slideUp 0.6s ease-out forwards;
-    }
   </style>
 </head>
 <body>
+
   <header>
     <div class="header-content">
       <div class="logo">Dano Apps</div>
@@ -471,262 +459,179 @@
         <span></span>
       </div>
       <nav id="nav">
-        <button class="nav-btn" onclick="showApp('numberlane')">Number Lane</button>
-        <button class="nav-btn" onclick="showApp('colorlane')">Color Lane</button>
-        <button class="nav-btn" onclick="showApp('ariva')">ARIVA</button>
-        <button class="nav-btn" onclick="showApp('inventory')">Inventory</button>
+        <a href="#numberlane" class="nav-link" onclick="closeNav()">Number Lane</a>
+        <a href="#colorlane" class="nav-link" onclick="closeNav()">Color Lane</a>
+        <a href="#ariva" class="nav-link" onclick="closeNav()">ARIVA</a>
+        <a href="#inventory" class="nav-link" onclick="closeNav()">Inventory</a>
+        <a href="#about" class="nav-link" onclick="closeNav()">About & Contact</a>
       </nav>
     </div>
   </header>
 
   <main>
     <div class="container">
-      <!-- Number Lane -->
+    
+      <section class="intro-hero">
+        <h1>Creative Apps for Modern Problems</h1>
+        <p>From engaging puzzle games that challenge your mind to practical utilities that simplify your life, explore our collection of beautifully crafted mobile applications.</p>
+      </section>
+
+      <section class="portfolio-grid">
+        <a href="#numberlane" class="app-card">
+          <h3>Number Lane</h3>
+          <p>An engaging puzzle of intricate number-based challenges.</p>
+        </a>
+        <a href="#colorlane" class="app-card">
+          <h3>Color Lane</h3>
+          <p>A visually captivating puzzle game of color gradients.</p>
+        </a>
+        <a href="#ariva" class="app-card">
+          <h3>ARIVA</h3>
+          <p>Infiltrate the digital realm as a cyber ninja in this sliding puzzler.</p>
+        </a>
+        <a href="#inventory" class="app-card">
+          <h3>Small Snack Inventory</h3>
+          <p>The perfect solution for managing snack inventory and sales.</p>
+        </a>
+      </section>
+
       <section id="numberlane" class="app-section">
         <div class="hero">
           <div class="hero-content">
             <h1>Number Lane</h1>
-            <p>An engaging puzzle experience that challenges your mind with intricate number-based gameplay</p>
-            <a href="https://play.google.com/store/apps/details?id=com.dano.number_lane" class="download-btn">
-              📱 Download Now
-            </a>
+            <p>An engaging puzzle experience that challenges your mind with intricate number-based gameplay.</p>
+            <a href="https://play.google.com/store/apps/details?id=com.dano.number_lane" class="download-btn">📱 Download Now</a>
           </div>
         </div>
-
         <div class="content">
           <div class="card">
-            <div class="card-header">
-              <h2>Screenshots</h2>
-            </div>
-            <div class="card-content">
-              <div class="screenshots">
+             <div class="card-header"><h2>Screenshots</h2></div>
+             <div class="card-content"><div class="screenshots">
                 <div class="screenshot"><img src="images/number_lane/1.png" alt="Number Lane Screenshot 1" /></div>
                 <div class="screenshot"><img src="images/number_lane/2.png" alt="Number Lane Screenshot 2" /></div>
                 <div class="screenshot"><img src="images/number_lane/3.png" alt="Number Lane Screenshot 3" /></div>
                 <div class="screenshot"><img src="images/number_lane/4.png" alt="Number Lane Screenshot 4" /></div>
-              </div>
-            </div>
+             </div></div>
           </div>
-
           <div class="card">
-            <div class="card-header">
-              <h2>Features</h2>
-            </div>
-            <div class="card-content">
-              <div class="features">
-                <div class="feature">
-                  <div class="feature-title">Visually Engaging Puzzles</div>
-                  <div>Solve intricate levels by identifying and tracing the correct color gradient path</div>
-                </div>
-                <div class="feature">
-                  <div class="feature-title">Cloud Save & Local Backup</div>
-                  <div>Progress is saved to Play Games Services and backed up locally</div>
-                </div>
-                <div class="feature">
-                  <div class="feature-title">Intuitive Interface</div>
-                  <div>Clean, user-friendly design focused on seamless puzzle-solving</div>
-                </div>
-                <div class="feature">
-                  <div class="feature-title">Future Multiplayer</div>
-                  <div>Plans for real-time multiplayer using a secure backend system</div>
-                </div>
-              </div>
-            </div>
+             <div class="card-header"><h2>Features</h2></div>
+             <div class="card-content"><div class="features">
+                <div class="feature"><div class="feature-title">Visually Engaging Puzzles</div><div>Solve intricate levels by identifying and tracing the correct color gradient path</div></div>
+                <div class="feature"><div class="feature-title">Cloud Save & Local Backup</div><div>Progress is saved to Play Games Services and backed up locally</div></div>
+                <div class="feature"><div class="feature-title">Intuitive Interface</div><div>Clean, user-friendly design focused on seamless puzzle-solving</div></div>
+                <div class="feature"><div class="feature-title">Future Multiplayer</div><div>Plans for real-time multiplayer using a secure backend system</div></div>
+             </div></div>
           </div>
         </div>
       </section>
 
-      <!-- Color Lane -->
       <section id="colorlane" class="app-section">
         <div class="hero">
           <div class="hero-content">
             <div class="hero-badge">⭐ Expert Approved on Play Store</div>
             <h1>Color Lane</h1>
-            <p>A visually captivating puzzle game of color gradients that challenges your perception</p>
-            <a href="https://play.google.com/store/apps/details?id=com.dano.color_lane" class="download-btn">
-              📱 Download Now
-            </a>
+            <p>A visually captivating puzzle game of color gradients that challenges your perception.</p>
+            <a href="https://play.google.com/store/apps/details?id=com.dano.color_lane" class="download-btn">📱 Download Now</a>
           </div>
         </div>
-
         <div class="content">
-          <div class="card">
-            <div class="card-header">
-              <h2>Screenshots</h2>
-            </div>
-            <div class="card-content">
-              <div class="screenshots">
+           <div class="card">
+             <div class="card-header"><h2>Screenshots</h2></div>
+             <div class="card-content"><div class="screenshots">
                 <div class="screenshot"><img src="images/color_lane/1.jpg" alt="Color Lane Screenshot 1" /></div>
                 <div class="screenshot"><img src="images/color_lane/2.jpg" alt="Color Lane Screenshot 2" /></div>
                 <div class="screenshot"><img src="images/color_lane/3.jpg" alt="Color Lane Screenshot 3" /></div>
                 <div class="screenshot"><img src="images/color_lane/4.jpg" alt="Color Lane Screenshot 4" /></div>
-              </div>
-            </div>
+             </div></div>
           </div>
-
           <div class="card">
-            <div class="card-header">
-              <h2>Features</h2>
-            </div>
-            <div class="card-content">
-              <div class="features">
-                <div class="feature">
-                  <div class="feature-title">Visually Engaging Puzzles</div>
-                  <div>Progress through increasingly intricate levels that challenge your perception</div>
-                </div>
-                <div class="feature">
-                  <div class="feature-title">Play Games Cloud Save</div>
-                  <div>Your progress is saved to Play Games Services when online</div>
-                </div>
-                <div class="feature">
-                  <div class="feature-title">Secure Login</div>
-                  <div>Securely log in to sync progress and access potential features</div>
-                </div>
-                <div class="feature">
-                  <div class="feature-title">Beautiful Design</div>
-                  <div>Focused on beautiful color gradients and seamless puzzle-solving</div>
-                </div>
-              </div>
-            </div>
+             <div class="card-header"><h2>Features</h2></div>
+             <div class="card-content"><div class="features">
+                <div class="feature"><div class="feature-title">Visually Engaging Puzzles</div><div>Progress through increasingly intricate levels that challenge your perception</div></div>
+                <div class="feature"><div class="feature-title">Play Games Cloud Save</div><div>Your progress is saved to Play Games Services when online</div></div>
+                <div class="feature"><div class="feature-title">Secure Login</div><div>Securely log in to sync progress and access potential features</div></div>
+                <div class="feature"><div class="feature-title">Beautiful Design</div><div>Focused on beautiful color gradients and seamless puzzle-solving</div></div>
+             </div></div>
           </div>
         </div>
       </section>
 
-      <!-- ARIVA -->
       <section id="ariva" class="app-section">
-        <div class="hero">
+         <div class="hero">
           <div class="hero-content">
             <h1>ARIVA: Cyber Infiltration</h1>
-            <p>Dive into the digital realm as a cyber ninja on a mission to outsmart a rogue AI network</p>
-            <a href="https://play.google.com/store/apps/details?id=com.dano.ariva" class="download-btn">
-              📱 Download Now
-            </a>
+            <p>Dive into the digital realm as a cyber ninja on a mission to outsmart a rogue AI network.</p>
+            <a href="https://play.google.com/store/apps/details?id=com.dano.ariva" class="download-btn">📱 Download Now</a>
           </div>
         </div>
-
         <div class="content">
-          <div class="card">
-            <div class="card-header">
-              <h2>Screenshots</h2>
-            </div>
-            <div class="card-content">
-              <div class="screenshots">
+           <div class="card">
+             <div class="card-header"><h2>Screenshots</h2></div>
+             <div class="card-content"><div class="screenshots">
                 <div class="screenshot"><img src="images/ariva/1.jpg" alt="ARIVA Screenshot 1" /></div>
                 <div class="screenshot"><img src="images/ariva/2.jpg" alt="ARIVA Screenshot 2" /></div>
                 <div class="screenshot"><img src="images/ariva/3.jpg" alt="ARIVA Screenshot 3" /></div>
                 <div class="screenshot"><img src="images/ariva/4.jpg" alt="ARIVA Screenshot 4" /></div>
-              </div>
-            </div>
+             </div></div>
           </div>
-
           <div class="card">
-            <div class="card-header">
-              <h2>Features</h2>
-            </div>
-            <div class="card-content">
-              <div class="features">
-                <div class="feature">
-                  <div class="feature-title">Strategic Sliding Puzzles</div>
-                  <div>Master the art of movement across intricate grid layouts</div>
-                </div>
-                <div class="feature">
-                  <div class="feature-title">Evade Cyber Threats</div>
-                  <div>Avoid red and gray anti-intrusion systems that instantly end your mission</div>
-                </div>
-                <div class="feature">
-                  <div class="feature-title">Immersive Cyber Theme</div>
-                  <div>Enjoy glowing visuals, sleek dark UI, and atmospheric sound effects</div>
-                </div>
-                <div class="feature">
-                  <div class="feature-title">Compete for Glory</div>
-                  <div>Submit your score to the leaderboard and prove you're the ultimate cyber ninja</div>
-                </div>
-              </div>
-            </div>
+             <div class="card-header"><h2>Features</h2></div>
+             <div class="card-content"><div class="features">
+                 <div class="feature"><div class="feature-title">Strategic Sliding Puzzles</div><div>Master the art of movement across intricate grid layouts</div></div>
+                 <div class="feature"><div class="feature-title">Evade Cyber Threats</div><div>Avoid red and gray anti-intrusion systems that instantly end your mission</div></div>
+                 <div class="feature"><div class="feature-title">Immersive Cyber Theme</div><div>Enjoy glowing visuals, sleek dark UI, and atmospheric sound effects</div></div>
+                 <div class="feature"><div class="feature-title">Compete for Glory</div><div>Submit your score to the leaderboard and prove you're the ultimate cyber ninja</div></div>
+             </div></div>
           </div>
         </div>
       </section>
 
-      <!-- Inventory -->
       <section id="inventory" class="app-section">
-        <div class="hero">
+         <div class="hero">
           <div class="hero-content">
             <h1>Small Snack Inventory</h1>
-            <p>Your comprehensive solution for snack inventory management with sales tracking and delivery management</p>
-            <a href="https://play.google.com/store/apps/details?id=com.dano.small_snack_inventory" class="download-btn">
-              📱 Download Now
-            </a>
+            <p>Your comprehensive solution for snack inventory management with sales tracking and delivery management.</p>
+            <a href="https://play.google.com/store/apps/details?id=com.dano.small_snack_inventory" class="download-btn">📱 Download Now</a>
           </div>
         </div>
-
         <div class="content">
-          <div class="card">
-            <div class="card-header">
-              <h2>Screenshots</h2>
-            </div>
-            <div class="card-content">
-              <div class="screenshots">
+           <div class="card">
+             <div class="card-header"><h2>Screenshots</h2></div>
+             <div class="card-content"><div class="screenshots">
                 <div class="screenshot"><img src="images/ssi/1.jpg" alt="Inventory Screenshot 1" /></div>
                 <div class="screenshot"><img src="images/ssi/2.jpg" alt="Inventory Screenshot 2" /></div>
                 <div class="screenshot"><img src="images/ssi/3.jpg" alt="Inventory Screenshot 3" /></div>
                 <div class="screenshot"><img src="images/ssi/4.jpg" alt="Inventory Screenshot 4" /></div>
-              </div>
-            </div>
+             </div></div>
           </div>
-
           <div class="card">
-            <div class="card-header">
-              <h2>Features</h2>
-            </div>
-            <div class="card-content">
-              <div class="features">
-                <div class="feature">
-                  <div class="feature-title">Inventory Management</div>
-                  <div>Easily manage your snack inventory by adding, editing, and removing items</div>
-                </div>
-                <div class="feature">
-                  <div class="feature-title">Sales Tracking</div>
-                  <div>Monitor sales and billing activities with automatic inventory updates</div>
-                </div>
-                <div class="feature">
-                  <div class="feature-title">Delivery Management</div>
-                  <div>Track undelivered quantities and schedule timely reminders</div>
-                </div>
-                <div class="feature">
-                  <div class="feature-title">Customer Management</div>
-                  <div>Organize your customer database and link customers to transactions</div>
-                </div>
-                <div class="feature">
-                  <div class="feature-title">Offline Access</div>
-                  <div>Manage inventory and track sales even without an internet connection</div>
-                </div>
-              </div>
-            </div>
+             <div class="card-header"><h2>Features</h2></div>
+             <div class="card-content"><div class="features">
+                <div class="feature"><div class="feature-title">Inventory Management</div><div>Easily manage your snack inventory by adding, editing, and removing items</div></div>
+                <div class="feature"><div class="feature-title">Sales Tracking</div><div>Monitor sales and billing activities with automatic inventory updates</div></div>
+                <div class="feature"><div class="feature-title">Delivery Management</div><div>Track undelivered quantities and schedule timely reminders</div></div>
+                <div class="feature"><div class="feature-title">Customer Management</div><div>Organize your customer database and link customers to transactions</div></div>
+                <div class="feature"><div class="feature-title">Offline Access</div><div>Manage inventory and track sales even without an internet connection</div></div>
+             </div></div>
           </div>
         </div>
       </section>
 
-      <!-- About & Contact -->
-      <div class="about-contact">
+      <section id="about" class="about-contact">
         <div class="card">
-          <div class="card-header">
-            <h2>About Dano Apps</h2>
-          </div>
+          <div class="card-header"><h2>About Dano Apps</h2></div>
           <div class="card-content">
             <p>Our applications are crafted to provide unique and engaging experiences, from visually stimulating puzzles to practical utility apps. Developed by Shubham Pawar, we focus on smooth gameplay, user-friendly design, and secure data handling.</p>
           </div>
         </div>
-        
         <div class="card contact">
-          <div class="card-header">
-            <h2>Contact Us</h2>
-          </div>
+          <div class="card-header"><h2>Contact Us</h2></div>
           <div class="card-content">
             <p>Have questions or feedback? We'd love to hear from you!</p>
             <p>Email: <a href="mailto:skpawar1305@gmail.com">skpawar1305@gmail.com</a></p>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   </main>
 
@@ -735,51 +640,9 @@
   </footer>
 
   <script>
-    let currentApp = 'numberlane';
-
-    function showApp(appId) {
-      // Hide current section
-      const currentSection = document.getElementById(currentApp);
-      if (currentSection) {
-        currentSection.classList.remove('active');
-      }
-
-      // Remove active class from all buttons
-      document.querySelectorAll('.nav-btn').forEach(btn => {
-        btn.classList.remove('active');
-      });
-
-      // Show new section with animation
-      setTimeout(() => {
-        const newSection = document.getElementById(appId);
-        if (newSection) {
-          newSection.classList.add('active');
-          // Trigger animation for cards
-          const cards = newSection.querySelectorAll('.card');
-          cards.forEach((card, index) => {
-            setTimeout(() => {
-              card.classList.add('animate-in');
-            }, index * 100);
-          });
-        }
-
-        // Add active class to clicked button
-        const activeButton = document.querySelector(`.nav-btn[onclick="showApp('${appId}')"]`);
-        if (activeButton) {
-          activeButton.classList.add('active');
-        }
-
-        currentApp = appId;
-      }, 150);
-
-      // Close mobile nav
-      closeNav();
-    }
-
     function toggleNav() {
       const nav = document.getElementById('nav');
       const toggle = document.querySelector('.nav-toggle');
-      
       nav.classList.toggle('active');
       toggle.classList.toggle('active');
     }
@@ -787,43 +650,9 @@
     function closeNav() {
       const nav = document.getElementById('nav');
       const toggle = document.querySelector('.nav-toggle');
-      
       nav.classList.remove('active');
       toggle.classList.remove('active');
     }
-
-    // Initialize
-    window.addEventListener('load', () => {
-      showApp('numberlane');
-    });
-
-    // Close nav when clicking outside
-    document.addEventListener('click', (e) => {
-      const nav = document.getElementById('nav');
-      const toggle = document.querySelector('.nav-toggle');
-      
-      if (!nav.contains(e.target) && !toggle.contains(e.target)) {
-        closeNav();
-      }
-    });
-
-    // Smooth scroll behavior
-    document.addEventListener('DOMContentLoaded', () => {
-      // Add intersection observer for animations
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-          }
-        });
-      }, { threshold: 0.1 });
-
-      // Observe all cards
-      document.querySelectorAll('.card').forEach(card => {
-        observer.observe(card);
-      });
-    });
   </script>
 </body>
 </html>

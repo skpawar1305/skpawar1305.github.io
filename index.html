@@ -6,16 +6,16 @@
   <title>Dano Apps - A Light & Modern Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    /* Light Mode Color Palette */
+    /* --- NEW: Light Mode Color Palette --- */
     :root {
       --primary: #6366f1;
       --primary-dark: #4f46e5;
       --secondary: #f43f5e;
-      --bg-light: #f8f9fa;
-      --bg-card: #ffffff;
-      --text-dark: #212529;
-      --text-muted: #6c757d;
-      --border: #e9ecef;
+      --bg-light: #f8f9fa; /* Off-white background */
+      --bg-card: #ffffff;  /* Pure white for cards */
+      --text-dark: #212529;  /* Dark gray for primary text */
+      --text-muted: #6c757d; /* Lighter gray for secondary text */
+      --border: #e9ecef;   /* Light border color */
       --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       --shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
       --shadow-lg: 0 15px 30px -5px rgba(0, 0, 0, 0.1);
@@ -33,8 +33,8 @@
 
     body {
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      background: var(--bg-light);
-      color: var(--text-dark);
+      background: var(--bg-light); /* Light background */
+      color: var(--text-dark);      /* Dark text */
       line-height: 1.6;
       overflow-x: hidden;
     }
@@ -44,7 +44,7 @@
       top: 0;
       width: 100%;
       backdrop-filter: blur(20px);
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.85); /* Light, translucent background */
       border-bottom: 1px solid var(--border);
       z-index: 1000;
       padding: 1rem 0;
@@ -80,7 +80,7 @@
     .nav-toggle span {
       width: 25px;
       height: 3px;
-      background: var(--text-dark);
+      background: var(--text-dark); /* Dark bars for hamburger */
       border-radius: 2px;
       transition: all 0.3s ease;
     }
@@ -97,7 +97,7 @@
     .nav-link {
       padding: 0.5rem 1rem;
       background: transparent;
-      border: 1px solid transparent;
+      border: 1px solid transparent; /* No border by default */
       color: var(--text-muted);
       border-radius: 50px;
       cursor: pointer;
@@ -157,6 +157,10 @@
       color: var(--text-dark);
       transition: all 0.3s ease;
       box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
 
     .app-card:hover {
@@ -165,13 +169,17 @@
       border-color: var(--primary);
     }
 
-    /* --- NEW: App Icon in Grid Card --- */
-    .app-card-icon {
-      width: 60px;
-      height: 60px;
+    .app-icon {
+      width: 64px;
+      height: 64px;
       border-radius: 12px;
       margin-bottom: 1rem;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .app-card:hover .app-icon {
+      transform: scale(1.05);
     }
 
     .app-card h3 {
@@ -206,16 +214,17 @@
     .hero-content {
       padding: 3rem 2rem;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    /* --- NEW: App Icon in Hero Section --- */
-    .hero-icon {
+    .hero-app-icon {
       width: 80px;
       height: 80px;
       border-radius: 16px;
-      margin: 0 auto 1.5rem;
-      display: block;
-      box-shadow: var(--shadow-lg);
+      margin-bottom: 1.5rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     }
 
     .hero-badge {
@@ -277,9 +286,20 @@
       overflow: hidden;
     }
 
-    .card-header { padding: 1.5rem; border-bottom: 1px solid var(--border); }
-    .card-header h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .card-content { padding: 1.5rem; }
+    .card-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .card-header h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-content {
+      padding: 1.5rem;
+    }
 
     .screenshots {
       display: grid;
@@ -294,25 +314,86 @@
       border: 1px solid var(--border);
     }
     
-    .screenshot img { width: 100%; height: 100%; object-fit: cover; }
+    .screenshot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
     
-    .features-list { list-style-type: none; padding-left: 0; display: flex; flex-direction: column; gap: 1rem; }
-    .features-list li { color: var(--text-muted); padding-left: 1.5rem; position: relative; }
-    .features-list li::before { content: '✔'; position: absolute; left: 0; color: var(--primary); font-weight: 600; }
+    /* Simplified features list */
+    .features-list {
+      list-style-type: none; /* remove default bullets */
+      padding-left: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
     
-    .about-contact { display: grid; grid-template-columns: 1fr; gap: 2rem; margin: 4rem 0 2rem; padding-top: 4rem; border-top: 1px solid var(--border); }
-    .contact a { color: var(--primary); text-decoration: none; font-weight: 500; }
-    .contact a:hover { text-decoration: underline; }
+    .features-list li {
+      color: var(--text-muted);
+      padding-left: 1.5rem;
+      position: relative;
+    }
     
-    footer { text-align: center; padding: 2rem; color: var(--text-muted); border-top: 1px solid var(--border); margin-top: 2rem; }
+    /* Custom checkmark bullet */
+    .features-list li::before {
+      content: '✔';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: 600;
+    }
+    
+    .about-contact {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin: 4rem 0 2rem;
+        padding-top: 4rem;
+        border-top: 1px solid var(--border);
+    }
+
+    .contact a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact a:hover {
+      text-decoration: underline;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+    }
 
     @media (max-width: 768px) {
       .nav-toggle { display: flex; }
-      nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(20px); height: 100vh; flex-direction: column; padding: 6rem 2rem 2rem; align-items: center; justify-content: center; transform: translateY(-100%); visibility: hidden; transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1); }
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        height: 100vh;
+        flex-direction: column;
+        padding: 6rem 2rem 2rem;
+        align-items: center;
+        justify-content: center;
+        transform: translateY(-100%);
+        visibility: hidden;
+        transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+      }
       nav.active { transform: translateY(0); visibility: visible; }
       .nav-link { width: 100%; text-align: center; padding: 1rem; font-size: 1.25rem; }
       .content { grid-template-columns: 1fr; }
       .screenshots { grid-template-columns: repeat(2, 1fr); }
+      .hero-app-icon { width: 64px; height: 64px; }
     }
   </style>
 </head>
@@ -342,22 +423,22 @@
 
       <section class="portfolio-grid">
         <a href="#numberlane" class="app-card">
-          <img src="images/number_lane/icon.jpg" alt="Number Lane Icon" class="app-card-icon">
+          <img src="images/number_lane/icon.jpg" alt="Number Lane Icon" class="app-icon">
           <h3>Number Lane</h3>
           <p>A challenging puzzle of number-based logic.</p>
         </a>
         <a href="#colorlane" class="app-card">
-          <img src="images/color_lane/icon.jpg" alt="Color Lane Icon" class="app-card-icon">
+          <img src="images/color_lane/icon.jpg" alt="Color Lane Icon" class="app-icon">
           <h3>Color Lane</h3>
           <p>A captivating puzzle game of color gradients.</p>
         </a>
         <a href="#ariva" class="app-card">
-          <img src="images/ariva/icon.jpg" alt="ARIVA Icon" class="app-card-icon">
+          <img src="images/ariva/icon.jpg" alt="ARIVA Icon" class="app-icon">
           <h3>ARIVA</h3>
           <p>A strategic cyber-ninja sliding puzzler.</p>
         </a>
         <a href="#inventory" class="app-card">
-          <img src="images/ssi/icon.jpg" alt="Snack Inventory Icon" class="app-card-icon">
+          <img src="images/ssi/icon.jpg" alt="Snack Inventory Icon" class="app-icon">
           <h3>Snack Inventory</h3>
           <p>Manage inventory, sales, and deliveries.</p>
         </a>
@@ -366,20 +447,40 @@
       <section id="numberlane" class="app-section">
         <div class="hero">
           <div class="hero-content">
-            <img src="images/number_lane/icon.jpg" alt="Number Lane Icon" class="hero-icon">
+            <img src="images/number_lane/icon.jpg" alt="Number Lane Icon" class="hero-app-icon">
             <h1>Number Lane</h1>
             <p>A challenging puzzle game that tests your logic with intricate number paths.</p>
             <a href="https://play.google.com/store/apps/details?id=com.dano.number_lane" class="download-btn">📱 Download Now</a>
           </div>
         </div>
         <div class="content">
+          <div class="card">
+             <div class="card-header"><h2>Screenshots</h2></div>
+             <div class="card-content"><div class="screenshots">
+                <div class="screenshot"><img src="images/number_lane/1.png" alt="Number Lane Screenshot 1" /></div>
+                <div class="screenshot"><img src="images/number_lane/2.png" alt="Number Lane Screenshot 2" /></div>
+                <div class="screenshot"><img src="images/number_lane/3.png" alt="Number Lane Screenshot 3" /></div>
+                <div class="screenshot"><img src="images/number_lane/4.png" alt="Number Lane Screenshot 4" /></div>
+             </div></div>
           </div>
+          <div class="card">
+             <div class="card-header"><h2>Key Features</h2></div>
+             <div class="card-content">
+               <ul class="features-list">
+                 <li>Engaging and challenging number puzzles</li>
+                 <li>Cloud save via Play Games & local backup</li>
+                 <li>Clean and intuitive puzzle-solving interface</li>
+                 <li>Real-time multiplayer mode coming soon</li>
+               </ul>
+             </div>
+          </div>
+        </div>
       </section>
 
       <section id="colorlane" class="app-section">
         <div class="hero">
           <div class="hero-content">
-            <img src="images/color_lane/icon.jpg" alt="Color Lane Icon" class="hero-icon">
+            <img src="images/color_lane/icon.jpg" alt="Color Lane Icon" class="hero-app-icon">
             <div class="hero-badge">⭐ Expert Approved on Play Store</div>
             <h1>Color Lane</h1>
             <p>A beautiful and visually captivating puzzle game of color gradients.</p>
@@ -387,33 +488,89 @@
           </div>
         </div>
         <div class="content">
-          </div>
+           <div class="card">
+             <div class="card-header"><h2>Screenshots</h2></div>
+             <div class="card-content"><div class="screenshots">
+                <div class="screenshot"><img src="images/color_lane/1.jpg" alt="Color Lane Screenshot 1" /></div>
+                <div class="screenshot"><img src="images/color_lane/2.jpg" alt="Color Lane Screenshot 2" /></div>
+                <div class="screenshot"><img src="images/color_lane/3.jpg" alt="Color Lane Screenshot 3" /></div>
+                <div class="screenshot"><img src="images/color_lane/4.jpg" alt="Color Lane Screenshot 4" /></div>
+             </div></div>
+           </div>
+           <div class="card">
+             <div class="card-header"><h2>Key Features</h2></div>
+             <div class="card-content">
+               <ul class="features-list">
+                 <li>Solve increasingly intricate gradient puzzles</li>
+                 <li>Progress saved automatically with Play Games</li>
+                 <li>Secure login to sync your data across devices</li>
+                 <li>Minimalist design focused on beautiful colors</li>
+               </ul>
+             </div>
+           </div>
+        </div>
       </section>
 
       <section id="ariva" class="app-section">
         <div class="hero"><div class="hero-content">
-            <img src="images/ariva/icon.jpg" alt="ARIVA Icon" class="hero-icon">
+            <img src="images/ariva/icon.jpg" alt="ARIVA Icon" class="hero-app-icon">
             <h1>ARIVA: Cyber Infiltration</h1>
             <p>Infiltrate a rogue AI as a cyber ninja in this strategic sliding puzzle game.</p>
             <a href="https://play.google.com/store/apps/details?id=com.dano.ariva" class="download-btn">📱 Download Now</a>
         </div></div>
         <div class="content">
-            </div>
+            <div class="card"><div class="card-header"><h2>Screenshots</h2></div><div class="card-content"><div class="screenshots">
+                <div class="screenshot"><img src="images/ariva/1.jpg" alt="ARIVA Screenshot 1" /></div>
+                <div class="screenshot"><img src="images/ariva/2.jpg" alt="ARIVA Screenshot 2" /></div>
+                <div class="screenshot"><img src="images/ariva/3.jpg" alt="ARIVA Screenshot 3" /></div>
+                <div class="screenshot"><img src="images/ariva/4.jpg" alt="ARIVA Screenshot 4" /></div>
+            </div></div></div>
+            <div class="card"><div class="card-header"><h2>Key Features</h2></div><div class="card-content">
+                <ul class="features-list">
+                    <li>Master strategic movement on intricate grids</li>
+                    <li>Evade anti-intrusion systems to survive</li>
+                    <li>Immersive cyber theme with glowing visuals</li>
+                    <li>Compete on global leaderboards</li>
+                </ul>
+            </div></div>
+        </div>
       </section>
 
       <section id="inventory" class="app-section">
         <div class="hero"><div class="hero-content">
-            <img src="images/ssi/icon.jpg" alt="Snack Inventory Icon" class="hero-icon">
+            <img src="images/ssi/icon.jpg" alt="Small Snack Inventory Icon" class="hero-app-icon">
             <h1>Small Snack Inventory</h1>
             <p>A comprehensive solution for inventory, sales, and delivery management.</p>
             <a href="https://play.google.com/store/apps/details?id=com.dano.small_snack_inventory" class="download-btn">📱 Download Now</a>
         </div></div>
         <div class="content">
-            </div>
+            <div class="card"><div class="card-header"><h2>Screenshots</h2></div><div class="card-content"><div class="screenshots">
+                <div class="screenshot"><img src="images/ssi/1.jpg" alt="Inventory Screenshot 1" /></div>
+                <div class="screenshot"><img src="images/ssi/2.jpg" alt="Inventory Screenshot 2" /></div>
+                <div class="screenshot"><img src="images/ssi/3.jpg" alt="Inventory Screenshot 3" /></div>
+                <div class="screenshot"><img src="images/ssi/4.jpg" alt="Inventory Screenshot 4" /></div>
+            </div></div></div>
+            <div class="card"><div class="card-header"><h2>Key Features</h2></div><div class="card-content">
+                <ul class="features-list">
+                    <li>Easily add, edit, and track inventory items</li>
+                    <li>Monitor sales with automatic stock updates</li>
+                    <li>Manage deliveries and schedule reminders</li>
+                    <li>Full offline access for management on the go</li>
+                </ul>
+            </div></div>
+        </div>
       </section>
 
+
       <section id="about" class="about-contact">
-        </section>
+        <div class="card">
+          <div class="card-header"><h2>About & Contact</h2></div>
+          <div class="card-content">
+            <p>Dano Apps are developed by Shubham Pawar, focusing on creating unique and user-friendly experiences. Have questions or feedback? We'd love to hear from you.</p>
+            <p style="margin-top: 1rem;"><strong>Email:</strong> <a href="mailto:skpawar1305@gmail.com">skpawar1305@gmail.com</a></p>
+          </div>
+        </div>
+      </section>
     </div>
   </main>
 

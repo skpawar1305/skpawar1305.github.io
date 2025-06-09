@@ -6,16 +6,16 @@
   <title>Dano Apps - A Light & Modern Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    /* --- NEW: Light Mode Color Palette --- */
+    /* --- Light Mode Color Palette --- */
     :root {
       --primary: #6366f1;
       --primary-dark: #4f46e5;
       --secondary: #f43f5e;
-      --bg-light: #f8f9fa; /* Off-white background */
-      --bg-card: #ffffff;  /* Pure white for cards */
-      --text-dark: #212529;  /* Dark gray for primary text */
-      --text-muted: #6c757d; /* Lighter gray for secondary text */
-      --border: #e9ecef;   /* Light border color */
+      --bg-light: #f8f9fa;
+      --bg-card: #ffffff;
+      --text-dark: #212529;
+      --text-muted: #6c757d;
+      --border: #e9ecef;
       --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       --shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
       --shadow-lg: 0 15px 30px -5px rgba(0, 0, 0, 0.1);
@@ -33,8 +33,8 @@
 
     body {
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      background: var(--bg-light); /* Light background */
-      color: var(--text-dark);      /* Dark text */
+      background: var(--bg-light);
+      color: var(--text-dark);
       line-height: 1.6;
       overflow-x: hidden;
     }
@@ -44,7 +44,7 @@
       top: 0;
       width: 100%;
       backdrop-filter: blur(20px);
-      background: rgba(255, 255, 255, 0.85); /* Light, translucent background */
+      background: rgba(255, 255, 255, 0.85);
       border-bottom: 1px solid var(--border);
       z-index: 1000;
       padding: 1rem 0;
@@ -80,7 +80,7 @@
     .nav-toggle span {
       width: 25px;
       height: 3px;
-      background: var(--text-dark); /* Dark bars for hamburger */
+      background: var(--text-dark);
       border-radius: 2px;
       transition: all 0.3s ease;
     }
@@ -97,7 +97,7 @@
     .nav-link {
       padding: 0.5rem 1rem;
       background: transparent;
-      border: 1px solid transparent; /* No border by default */
+      border: 1px solid transparent;
       color: var(--text-muted);
       border-radius: 50px;
       cursor: pointer;
@@ -193,64 +193,67 @@
       font-size: 1rem;
     }
 
+    /* Compact App Sections */
     .app-section {
-      padding: 4rem 0;
+      padding: 3rem 0;
       border-top: 1px solid var(--border);
     }
     .app-section:first-of-type {
       border-top: none;
     }
 
-    .hero {
+    .app-hero {
       background: var(--bg-card);
-      border-radius: 24px;
-      margin-bottom: 2rem;
+      border-radius: 20px;
+      margin-bottom: 1.5rem;
       overflow: hidden;
       position: relative;
-      box-shadow: var(--shadow-lg);
+      box-shadow: var(--shadow);
       border: 1px solid var(--border);
     }
 
-    .hero-content {
-      padding: 3rem 2rem;
-      text-align: center;
+    .app-hero-content {
+      padding: 2rem;
       display: flex;
-      flex-direction: column;
       align-items: center;
+      gap: 2rem;
     }
 
-    .hero-app-icon {
+    .app-hero-icon {
       width: 80px;
       height: 80px;
       border-radius: 16px;
-      margin-bottom: 1.5rem;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      flex-shrink: 0;
     }
 
-    .hero-badge {
+    .app-hero-text {
+      flex: 1;
+    }
+
+    .app-hero-badge {
       display: inline-block;
       background: rgba(99, 102, 241, 0.1);
       border: 1px solid rgba(99, 102, 241, 0.2);
       color: var(--primary);
-      padding: 0.5rem 1rem;
+      padding: 0.25rem 0.75rem;
       border-radius: 50px;
-      font-size: 0.875rem;
+      font-size: 0.75rem;
       font-weight: 600;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
     }
 
-    .hero h1 {
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      font-weight: 800;
-      margin-bottom: 1rem;
+    .app-hero h1 {
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
       line-height: 1.2;
     }
     
-    .hero p {
-      font-size: 1.125rem;
+    .app-hero p {
+      font-size: 1rem;
       color: var(--text-muted);
-      max-width: 600px;
-      margin: 0 auto 2rem;
+      margin-bottom: 1.5rem;
     }
 
     .download-btn {
@@ -259,42 +262,44 @@
       gap: 0.5rem;
       background: var(--primary);
       color: white;
-      padding: 1rem 2rem;
+      padding: 0.75rem 1.5rem;
       border-radius: 50px;
       text-decoration: none;
       font-weight: 600;
+      font-size: 0.9rem;
       transition: all 0.3s ease;
       box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
     }
 
     .download-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(99, 102, 241, 0.3);
       background: var(--primary-dark);
     }
 
-    .content {
+    .app-content {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
+      grid-template-columns: 2fr 1fr;
+      gap: 1.5rem;
     }
 
     .card {
       background: var(--bg-card);
-      border-radius: 16px;
+      border-radius: 12px;
       border: 1px solid var(--border);
       overflow: hidden;
     }
 
     .card-header {
-      padding: 1.5rem;
+      padding: 1rem 1.5rem;
       border-bottom: 1px solid var(--border);
+      background: rgba(99, 102, 241, 0.02);
     }
 
     .card-header h2 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 0;
     }
 
     .card-content {
@@ -303,39 +308,44 @@
 
     .screenshots {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 1rem;
     }
 
     .screenshot {
       aspect-ratio: 9/16;
-      border-radius: 12px;
+      border-radius: 8px;
       overflow: hidden;
       border: 1px solid var(--border);
+      background: var(--bg-light);
     }
     
     .screenshot img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .screenshot:hover img {
+      transform: scale(1.05);
     }
     
-    /* Simplified features list */
     .features-list {
-      list-style-type: none; /* remove default bullets */
+      list-style-type: none;
       padding-left: 0;
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 0.75rem;
     }
     
     .features-list li {
       color: var(--text-muted);
       padding-left: 1.5rem;
       position: relative;
+      font-size: 0.9rem;
     }
     
-    /* Custom checkmark bullet */
     .features-list li::before {
       content: '✔';
       position: absolute;
@@ -391,9 +401,36 @@
       }
       nav.active { transform: translateY(0); visibility: visible; }
       .nav-link { width: 100%; text-align: center; padding: 1rem; font-size: 1.25rem; }
-      .content { grid-template-columns: 1fr; }
-      .screenshots { grid-template-columns: repeat(2, 1fr); }
-      .hero-app-icon { width: 64px; height: 64px; }
+      
+      .app-hero-content {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem;
+        gap: 1rem;
+      }
+      
+      .app-hero-icon { 
+        width: 64px; 
+        height: 64px; 
+      }
+      
+      .app-content { 
+        grid-template-columns: 1fr; 
+      }
+      
+      .screenshots { 
+        grid-template-columns: repeat(2, 1fr); 
+      }
+    }
+
+    @media (max-width: 480px) {
+      .screenshots {
+        grid-template-columns: 1fr;
+      }
+      
+      .app-hero-content {
+        padding: 1rem;
+      }
     }
   </style>
 </head>
@@ -445,32 +482,34 @@
       </section>
 
       <section id="numberlane" class="app-section">
-        <div class="hero">
-          <div class="hero-content">
-            <img src="images/number_lane/icon.jpg" alt="Number Lane Icon" class="hero-app-icon">
-            <h1>Number Lane</h1>
-            <p>A challenging puzzle game that tests your logic with intricate number paths.</p>
-            <a href="https://play.google.com/store/apps/details?id=com.dano.number_lane" class="download-btn">📱 Download Now</a>
+        <div class="app-hero">
+          <div class="app-hero-content">
+            <img src="images/number_lane/icon.jpg" alt="Number Lane Icon" class="app-hero-icon">
+            <div class="app-hero-text">
+              <h1>Number Lane</h1>
+              <p>A challenging puzzle game that tests your logic with intricate number paths.</p>
+              <a href="https://play.google.com/store/apps/details?id=com.dano.number_lane" class="download-btn">📱 Download Now</a>
+            </div>
           </div>
         </div>
-        <div class="content">
+        <div class="app-content">
           <div class="card">
              <div class="card-header"><h2>Screenshots</h2></div>
              <div class="card-content"><div class="screenshots">
-                <div class="screenshot"><img src="images/number_lane/1.png" alt="Number Lane Screenshot 1" /></div>
-                <div class="screenshot"><img src="images/number_lane/2.png" alt="Number Lane Screenshot 2" /></div>
-                <div class="screenshot"><img src="images/number_lane/3.png" alt="Number Lane Screenshot 3" /></div>
-                <div class="screenshot"><img src="images/number_lane/4.png" alt="Number Lane Screenshot 4" /></div>
+                <div class="screenshot"><img src="images/number_lane/1.png" alt="Number Lane Screenshot 1" loading="lazy" /></div>
+                <div class="screenshot"><img src="images/number_lane/2.png" alt="Number Lane Screenshot 2" loading="lazy" /></div>
+                <div class="screenshot"><img src="images/number_lane/3.png" alt="Number Lane Screenshot 3" loading="lazy" /></div>
+                <div class="screenshot"><img src="images/number_lane/4.png" alt="Number Lane Screenshot 4" loading="lazy" /></div>
              </div></div>
           </div>
           <div class="card">
-             <div class="card-header"><h2>Key Features</h2></div>
+             <div class="card-header"><h2>Features</h2></div>
              <div class="card-content">
                <ul class="features-list">
-                 <li>Engaging and challenging number puzzles</li>
-                 <li>Cloud save via Play Games & local backup</li>
-                 <li>Clean and intuitive puzzle-solving interface</li>
-                 <li>Real-time multiplayer mode coming soon</li>
+                 <li>Engaging number puzzles</li>
+                 <li>Cloud save & local backup</li>
+                 <li>Clean, intuitive interface</li>
+                 <li>Multiplayer mode coming soon</li>
                </ul>
              </div>
           </div>
@@ -478,33 +517,35 @@
       </section>
 
       <section id="colorlane" class="app-section">
-        <div class="hero">
-          <div class="hero-content">
-            <img src="images/color_lane/icon.jpg" alt="Color Lane Icon" class="hero-app-icon">
-            <div class="hero-badge">⭐ Expert Approved on Play Store</div>
-            <h1>Color Lane</h1>
-            <p>A beautiful and visually captivating puzzle game of color gradients.</p>
-            <a href="https://play.google.com/store/apps/details?id=com.dano.color_lane" class="download-btn">📱 Download Now</a>
+        <div class="app-hero">
+          <div class="app-hero-content">
+            <img src="images/color_lane/icon.jpg" alt="Color Lane Icon" class="app-hero-icon">
+            <div class="app-hero-text">
+              <div class="app-hero-badge">⭐ Expert Approved</div>
+              <h1>Color Lane</h1>
+              <p>A beautiful and visually captivating puzzle game of color gradients.</p>
+              <a href="https://play.google.com/store/apps/details?id=com.dano.color_lane" class="download-btn">📱 Download Now</a>
+            </div>
           </div>
         </div>
-        <div class="content">
+        <div class="app-content">
            <div class="card">
              <div class="card-header"><h2>Screenshots</h2></div>
              <div class="card-content"><div class="screenshots">
-                <div class="screenshot"><img src="images/color_lane/1.jpg" alt="Color Lane Screenshot 1" /></div>
-                <div class="screenshot"><img src="images/color_lane/2.jpg" alt="Color Lane Screenshot 2" /></div>
-                <div class="screenshot"><img src="images/color_lane/3.jpg" alt="Color Lane Screenshot 3" /></div>
-                <div class="screenshot"><img src="images/color_lane/4.jpg" alt="Color Lane Screenshot 4" /></div>
+                <div class="screenshot"><img src="images/color_lane/1.jpg" alt="Color Lane Screenshot 1" loading="lazy" /></div>
+                <div class="screenshot"><img src="images/color_lane/2.jpg" alt="Color Lane Screenshot 2" loading="lazy" /></div>
+                <div class="screenshot"><img src="images/color_lane/3.jpg" alt="Color Lane Screenshot 3" loading="lazy" /></div>
+                <div class="screenshot"><img src="images/color_lane/4.jpg" alt="Color Lane Screenshot 4" loading="lazy" /></div>
              </div></div>
            </div>
            <div class="card">
-             <div class="card-header"><h2>Key Features</h2></div>
+             <div class="card-header"><h2>Features</h2></div>
              <div class="card-content">
                <ul class="features-list">
-                 <li>Solve increasingly intricate gradient puzzles</li>
-                 <li>Progress saved automatically with Play Games</li>
-                 <li>Secure login to sync your data across devices</li>
-                 <li>Minimalist design focused on beautiful colors</li>
+                 <li>Intricate gradient puzzles</li>
+                 <li>Auto-save with Play Games</li>
+                 <li>Cross-device sync</li>
+                 <li>Minimalist color design</li>
                </ul>
              </div>
            </div>
@@ -512,55 +553,74 @@
       </section>
 
       <section id="ariva" class="app-section">
-        <div class="hero"><div class="hero-content">
-            <img src="images/ariva/icon.jpg" alt="ARIVA Icon" class="hero-app-icon">
-            <h1>ARIVA: Cyber Infiltration</h1>
-            <p>Infiltrate a rogue AI as a cyber ninja in this strategic sliding puzzle game.</p>
-            <a href="https://play.google.com/store/apps/details?id=com.dano.ariva" class="download-btn">📱 Download Now</a>
-        </div></div>
-        <div class="content">
-            <div class="card"><div class="card-header"><h2>Screenshots</h2></div><div class="card-content"><div class="screenshots">
-                <div class="screenshot"><img src="images/ariva/1.jpg" alt="ARIVA Screenshot 1" /></div>
-                <div class="screenshot"><img src="images/ariva/2.jpg" alt="ARIVA Screenshot 2" /></div>
-                <div class="screenshot"><img src="images/ariva/3.jpg" alt="ARIVA Screenshot 3" /></div>
-                <div class="screenshot"><img src="images/ariva/4.jpg" alt="ARIVA Screenshot 4" /></div>
-            </div></div></div>
-            <div class="card"><div class="card-header"><h2>Key Features</h2></div><div class="card-content">
+        <div class="app-hero">
+          <div class="app-hero-content">
+            <img src="images/ariva/icon.jpg" alt="ARIVA Icon" class="app-hero-icon">
+            <div class="app-hero-text">
+              <h1>ARIVA: Cyber Infiltration</h1>
+              <p>Infiltrate a rogue AI as a cyber ninja in this strategic sliding puzzle game.</p>
+              <a href="https://play.google.com/store/apps/details?id=com.dano.ariva" class="download-btn">📱 Download Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="app-content">
+            <div class="card">
+              <div class="card-header"><h2>Screenshots</h2></div>
+              <div class="card-content"><div class="screenshots">
+                <div class="screenshot"><img src="images/ariva/1.jpg" alt="ARIVA Screenshot 1" loading="lazy" /></div>
+                <div class="screenshot"><img src="images/ariva/2.jpg" alt="ARIVA Screenshot 2" loading="lazy" /></div>
+                <div class="screenshot"><img src="images/ariva/3.jpg" alt="ARIVA Screenshot 3" loading="lazy" /></div>
+                <div class="screenshot"><img src="images/ariva/4.jpg" alt="ARIVA Screenshot 4" loading="lazy" /></div>
+              </div></div>
+            </div>
+            <div class="card">
+              <div class="card-header"><h2>Features</h2></div>
+              <div class="card-content">
                 <ul class="features-list">
-                    <li>Master strategic movement on intricate grids</li>
-                    <li>Evade anti-intrusion systems to survive</li>
-                    <li>Immersive cyber theme with glowing visuals</li>
-                    <li>Compete on global leaderboards</li>
+                    <li>Strategic grid movement</li>
+                    <li>Evade anti-intrusion systems</li>
+                    <li>Immersive cyber visuals</li>
+                    <li>Global leaderboards</li>
                 </ul>
-            </div></div>
+              </div>
+            </div>
         </div>
       </section>
 
       <section id="inventory" class="app-section">
-        <div class="hero"><div class="hero-content">
-            <img src="images/ssi/icon.jpg" alt="Small Snack Inventory Icon" class="hero-app-icon">
-            <h1>Small Snack Inventory</h1>
-            <p>A comprehensive solution for inventory, sales, and delivery management.</p>
-            <a href="https://play.google.com/store/apps/details?id=com.dano.small_snack_inventory" class="download-btn">📱 Download Now</a>
-        </div></div>
-        <div class="content">
-            <div class="card"><div class="card-header"><h2>Screenshots</h2></div><div class="card-content"><div class="screenshots">
-                <div class="screenshot"><img src="images/ssi/1.jpg" alt="Inventory Screenshot 1" /></div>
-                <div class="screenshot"><img src="images/ssi/2.jpg" alt="Inventory Screenshot 2" /></div>
-                <div class="screenshot"><img src="images/ssi/3.jpg" alt="Inventory Screenshot 3" /></div>
-                <div class="screenshot"><img src="images/ssi/4.jpg" alt="Inventory Screenshot 4" /></div>
-            </div></div></div>
-            <div class="card"><div class="card-header"><h2>Key Features</h2></div><div class="card-content">
+        <div class="app-hero">
+          <div class="app-hero-content">
+            <img src="images/ssi/icon.jpg" alt="Small Snack Inventory Icon" class="app-hero-icon">
+            <div class="app-hero-text">
+              <h1>Small Snack Inventory</h1>
+              <p>A comprehensive solution for inventory, sales, and delivery management.</p>
+              <a href="https://play.google.com/store/apps/details?id=com.dano.small_snack_inventory" class="download-btn">📱 Download Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="app-content">
+            <div class="card">
+              <div class="card-header"><h2>Screenshots</h2></div>
+              <div class="card-content"><div class="screenshots">
+                <div class="screenshot"><img src="images/ssi/1.jpg" alt="Inventory Screenshot 1" loading="lazy" /></div>
+                <div class="screenshot"><img src="images/ssi/2.jpg" alt="Inventory Screenshot 2" loading="lazy" /></div>
+                <div class="screenshot"><img src="images/ssi/3.jpg" alt="Inventory Screenshot 3" loading="lazy" /></div>
+                <div class="screenshot"><img src="images/ssi/4.jpg" alt="Inventory Screenshot 4" loading="lazy" /></div>
+              </div></div>
+            </div>
+            <div class="card">
+              <div class="card-header"><h2>Features</h2></div>
+              <div class="card-content">
                 <ul class="features-list">
-                    <li>Easily add, edit, and track inventory items</li>
-                    <li>Monitor sales with automatic stock updates</li>
-                    <li>Manage deliveries and schedule reminders</li>
-                    <li>Full offline access for management on the go</li>
+                    <li>Add, edit, and track items</li>
+                    <li>Sales with auto stock updates</li>
+                    <li>Delivery management</li>
+                    <li>Full offline access</li>
                 </ul>
-            </div></div>
+              </div>
+            </div>
         </div>
       </section>
-
 
       <section id="about" class="about-contact">
         <div class="card">
